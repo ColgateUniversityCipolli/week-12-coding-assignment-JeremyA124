@@ -1,0 +1,408 @@
+\documentclass{article}\usepackage[]{graphicx}\usepackage[]{xcolor}
+% maxwidth is the original width if it is less than linewidth
+% otherwise use linewidth (to make sure the graphics do not exceed the margin)
+\makeatletter
+\def\maxwidth{ %
+  \ifdim\Gin@nat@width>\linewidth
+    \linewidth
+  \else
+    \Gin@nat@width
+  \fi
+}
+\makeatother
+
+\definecolor{fgcolor}{rgb}{0.345, 0.345, 0.345}
+\newcommand{\hlnum}[1]{\textcolor[rgb]{0.686,0.059,0.569}{#1}}%
+\newcommand{\hlsng}[1]{\textcolor[rgb]{0.192,0.494,0.8}{#1}}%
+\newcommand{\hlcom}[1]{\textcolor[rgb]{0.678,0.584,0.686}{\textit{#1}}}%
+\newcommand{\hlopt}[1]{\textcolor[rgb]{0,0,0}{#1}}%
+\newcommand{\hldef}[1]{\textcolor[rgb]{0.345,0.345,0.345}{#1}}%
+\newcommand{\hlkwa}[1]{\textcolor[rgb]{0.161,0.373,0.58}{\textbf{#1}}}%
+\newcommand{\hlkwb}[1]{\textcolor[rgb]{0.69,0.353,0.396}{#1}}%
+\newcommand{\hlkwc}[1]{\textcolor[rgb]{0.333,0.667,0.333}{#1}}%
+\newcommand{\hlkwd}[1]{\textcolor[rgb]{0.737,0.353,0.396}{\textbf{#1}}}%
+\let\hlipl\hlkwb
+
+\usepackage{framed}
+\makeatletter
+\newenvironment{kframe}{%
+ \def\at@end@of@kframe{}%
+ \ifinner\ifhmode%
+  \def\at@end@of@kframe{\end{minipage}}%
+  \begin{minipage}{\columnwidth}%
+ \fi\fi%
+ \def\FrameCommand##1{\hskip\@totalleftmargin \hskip-\fboxsep
+ \colorbox{shadecolor}{##1}\hskip-\fboxsep
+     % There is no \\@totalrightmargin, so:
+     \hskip-\linewidth \hskip-\@totalleftmargin \hskip\columnwidth}%
+ \MakeFramed {\advance\hsize-\width
+   \@totalleftmargin\z@ \linewidth\hsize
+   \@setminipage}}%
+ {\par\unskip\endMakeFramed%
+ \at@end@of@kframe}
+\makeatother
+
+\definecolor{shadecolor}{rgb}{.97, .97, .97}
+\definecolor{messagecolor}{rgb}{0, 0, 0}
+\definecolor{warningcolor}{rgb}{1, 0, 1}
+\definecolor{errorcolor}{rgb}{1, 0, 0}
+\newenvironment{knitrout}{}{} % an empty environment to be redefined in TeX
+
+\usepackage{alltt}
+\usepackage[margin=1.0in]{geometry} % To set margins
+\usepackage{amsmath}  % This allows me to use the align functionality.
+                      % If you find yourself trying to replicate
+                      % something you found online, ensure you're
+                      % loading the necessary packages!
+\usepackage{amsfonts} % Math font
+\usepackage{fancyvrb}
+\usepackage{hyperref} % For including hyperlinks
+\usepackage[shortlabels]{enumitem}% For enumerated lists with labels specified
+                                  % We had to run tlmgr_install("enumitem") in R
+\usepackage{float}    % For telling R where to put a table/figure
+\usepackage{natbib}        %For the bibliography
+\bibliographystyle{apalike}%For the bibliography
+\IfFileExists{upquote.sty}{\usepackage{upquote}}{}
+\begin{document}
+
+
+\begin{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Question 1
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\item A group of researchers is running an experiment over the course of 30 months, 
+with a single observation collected at the end of each month. Let $X_1, ..., X_{30}$
+denote the observations for each month. From prior studies, the researchers know that
+\[X_i \sim f_X(x),\]
+but the mean $\mu_X$ is unknown, and they wish to conduct the following test
+\begin{align*}
+H_0&: \mu_X = 0\\
+H_a&: \mu_X > 0.
+\end{align*}
+At month $k$, they have accumulated data $X_1, ..., X_k$ and they have the 
+$t$-statistic
+\[T_k = \frac{\bar{X} - 0}{S_k/\sqrt{n}}.\]
+The initial plan was to test the hypotheses after all data was collected (at the 
+end of month 30), at level $\alpha=0.05$. However, conducting the experiment is 
+expensive, so the researchers want to ``peek" at the data at the end of month 20 
+to see if they can stop it early. That is, the researchers propose to check 
+whether $t_{20}$ provides statistically discernible support for the alternative. 
+If it does, they will stop the experiment early and report support for the 
+researcher's alternative hypothesis. If it does not, they will continue to month 
+30 and test whether $t_{30}$ provides statistically discernible support for the
+alternative.
+
+\begin{enumerate}
+  \item What values of $t_{20}$ provide statistically discernible support for the
+  alternative hypothesis? \\
+  \textbf{Solution:} Below, we find the value of $t_{20}$ that provides statistically discernible support for the
+  alternative hypothesis?
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hldef{n} \hlkwb{<-} \hlnum{20}
+\hlkwd{qt}\hldef{(}\hlnum{0.95}\hldef{,} \hlkwc{df} \hldef{= n} \hlopt{-} \hlnum{1}\hldef{)} \hlcom{#find the value for t for 20 observations}
+\end{alltt}
+\begin{verbatim}
+## [1] 1.729133
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  
+  \item What values of $t_{30}$ provide statistically discernible support for the
+  alternative hypothesis? \\
+  \textbf{Solution:} Below, we find the value of $t_{30}$ that provides statistically discernible support for the
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hldef{n} \hlkwb{<-} \hlnum{30}
+\hlkwd{qt}\hldef{(}\hlnum{0.95}\hldef{,} \hlkwc{df} \hldef{= n} \hlopt{-} \hlnum{1}\hldef{)} \hlcom{#find the value for t for 30 observations}
+\end{alltt}
+\begin{verbatim}
+## [1] 1.699127
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  
+  \item Suppose $f_X(x)$ is a Laplace distribution with $a=0$ and $b=4.0$.
+  Conduct a simulation study to assess the Type I error rate of this approach.\\
+  \textbf{Note:} You can use the \texttt{rlaplace()} function from the \texttt{VGAM}
+  package for \texttt{R} \citep{VGAM}. \\
+  \textbf{Solution:} Below, we find the Type I error rate of this approach.
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hldef{R} \hlkwb{<-} \hlnum{1000} \hlcom{#resample size}
+\hldef{hypo.check} \hlkwb{<-} \hlkwd{tibble}\hldef{(}  \hlcom{#tibble to store data}
+  \hlkwc{reject} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R)}
+\hldef{)}
+
+\hlkwa{for} \hldef{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hldef{R)\{}
+  \hldef{sim.data.30} \hlkwb{<-} \hlkwd{rlaplace}\hldef{(}\hlkwc{n} \hldef{=} \hlnum{30}\hldef{,} \hlkwc{location} \hldef{=} \hlnum{0}\hldef{,} \hlkwc{scale} \hldef{=} \hlnum{4}\hldef{)} \hlcom{#simulate rlapace data for n = 30}
+  \hldef{sim.data.20} \hlkwb{<-} \hldef{sim.data.30[}\hlnum{1}\hlopt{:}\hlnum{20}\hldef{]} \hlcom{#take the first 20 observations}
+
+  \hldef{p.value.20} \hlkwb{<-} \hlkwd{t.test}\hldef{(sim.data.20,} \hlcom{#grab the p-value for the first 20 observations}
+                       \hlkwc{mu}\hldef{=} \hlnum{0}\hldef{,}
+                       \hlkwc{alternative} \hldef{=} \hlsng{"greater"}\hldef{)}\hlopt{$}\hldef{p.value}
+  \hldef{p.value.30} \hlkwb{<-} \hlkwd{t.test}\hldef{(sim.data.30,} \hlcom{#grab the p-value for the first 30 observations}
+                       \hlkwc{mu}\hldef{=} \hlnum{0}\hldef{,}
+                       \hlkwc{alternative} \hldef{=} \hlsng{"greater"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+  \hlcom{#Perform a hyphesis check for n = 20 and n = 30}
+  \hldef{hypo.check}\hlopt{$}\hldef{reject[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.20} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,}
+                                 \hlkwd{ifelse}\hldef{(p.value.30} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{))}
+\hldef{\}}
+
+\hldef{type1.error.rate} \hlkwb{<-} \hlkwd{sum}\hldef{(hypo.check}\hlopt{$}\hldef{reject)}\hlopt{/}\hldef{R} \hlcom{#Calulcate the Type I error rate}
+\hldef{type1.error.rate} \hlcom{#display}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.098
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  
+  \item \textbf{Optional Challenge:} Can you find a value of $\alpha<0.05$ that yields a 
+  Type I error rate of 0.05?
+  \textbf{Solution:} Below, we find the value of $\alpha<0.05$ that yields a 
+  Type I error rate of 0.05.
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hldef{solve} \hlkwb{<-} \hlkwa{function}\hldef{(}\hlkwc{x}\hldef{) \{} \hlcom{#Create a function to solve for f(x) = 0}
+  \hldef{hypo.check} \hlkwb{<-} \hlkwd{tibble}\hldef{(} \hlcom{#tibble to store data}
+    \hlkwc{reject} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R)}
+  \hldef{)}
+
+  \hlkwa{for} \hldef{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hldef{R)\{}
+    \hldef{sim.data.30} \hlkwb{<-} \hlkwd{rlaplace}\hldef{(}\hlkwc{n} \hldef{=} \hlnum{30}\hldef{,} \hlkwc{location} \hldef{=} \hlnum{0}\hldef{,} \hlkwc{scale} \hldef{=} \hlnum{4}\hldef{)} \hlcom{#simulate rlapace data for n = 30}
+    \hldef{sim.data.20} \hlkwb{<-} \hldef{sim.data.30[}\hlnum{1}\hlopt{:}\hlnum{20}\hldef{]} \hlcom{#take the first 20 observations}
+
+    \hldef{p.value.20} \hlkwb{<-} \hlkwd{t.test}\hldef{(sim.data.20,} \hlcom{#grab the p-value for the first 20 observations}
+                         \hlkwc{mu}\hldef{=} \hlnum{0}\hldef{,}
+                         \hlkwc{alternative} \hldef{=} \hlsng{"greater"}\hldef{)}\hlopt{$}\hldef{p.value}
+    \hldef{p.value.30} \hlkwb{<-} \hlkwd{t.test}\hldef{(sim.data.30,} \hlcom{#grab the p-value for the first 30 observations}
+                         \hlkwc{mu}\hldef{=} \hlnum{0}\hldef{,}
+                         \hlkwc{alternative} \hldef{=} \hlsng{"greater"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+    \hlcom{#Perform a hyphesis check for n = 20 and n = 30}
+    \hldef{hypo.check}\hlopt{$}\hldef{reject[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.20} \hlopt{<=} \hldef{x,} \hlnum{1}\hldef{,}
+                                   \hlkwd{ifelse}\hldef{(p.value.30} \hlopt{<=} \hldef{x,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{))}
+  \hldef{\}}
+
+  \hlkwd{return}\hldef{(}\hlnum{50}\hlopt{-}\hlkwd{sum}\hldef{(hypo.check))} \hlcom{#return the solution (Should be 0)}
+\hldef{\}}
+
+\hldef{alpha} \hlkwb{<-} \hlkwd{uniroot}\hldef{(solve,} \hlkwc{lower} \hldef{=} \hlnum{0}\hldef{,} \hlkwc{upper} \hldef{=} \hlnum{0.05}\hldef{)}\hlopt{$}\hldef{root} \hlcom{#solve for alpha}
+\hldef{alpha} \hlcom{#display}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.03606428
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+  
+\end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% Question 2
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+  \item Perform a simulation study to assess the robustness of the $T$ test. 
+  Specifically, generate samples of size $n=15$ from the Beta(10,2), Beta(2,10), 
+  and Beta(10,10) distributions and conduct the following hypothesis tests against 
+  the actual mean for each case (e.g., $\frac{10}{10+2}$, $\frac{2}{10+2}$, and 
+  $\frac{10}{10+10}$). 
+  \begin{enumerate}
+    \item What proportion of the time do we make an error of Type I for a
+    left-tailed test? \\
+    \textbf{Solution:} Below, we find the proportion of the times we make a Type I error for the Beta(10,2), Beta(2,10), and Beta(10,10) distributions with a left-tailed test.
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hldef{hypo.check.less} \hlkwb{<-} \hlkwd{tibble}\hldef{(} \hlcom{#Tibble to store our data}
+  \hlkwc{reject.10.2} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R),}
+  \hlkwc{reject.2.10} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R),}
+  \hlkwc{reject.10.10} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R)}
+\hldef{)}
+
+\hlkwa{for} \hldef{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hldef{R)\{}
+  \hldef{sample.beta.10.2} \hlkwb{<-} \hlkwd{rbeta}\hldef{(}\hlkwc{n} \hldef{=} \hlnum{15}\hldef{,} \hlkwc{shape1} \hldef{=} \hlnum{10}\hldef{,} \hlkwc{shape2} \hldef{=} \hlnum{2}\hldef{)} \hlcom{#Generate some samples of beta (10,2)}
+  \hldef{sample.beta.2.10} \hlkwb{<-} \hlkwd{rbeta}\hldef{(}\hlkwc{n} \hldef{=} \hlnum{15}\hldef{,} \hlkwc{shape1} \hldef{=} \hlnum{2}\hldef{,} \hlkwc{shape2} \hldef{=} \hlnum{10}\hldef{)} \hlcom{#Generate some samples of beta (2,10)}
+  \hldef{sample.beta.10.10} \hlkwb{<-} \hlkwd{rbeta}\hldef{(}\hlkwc{n}\hldef{=} \hlnum{15}\hldef{,} \hlkwc{shape1} \hldef{=} \hlnum{10}\hldef{,} \hlkwc{shape2} \hldef{=} \hlnum{10}\hldef{)} \hlcom{#Generate some samples of beta (10,10)}
+
+  \hldef{p.value.1} \hlkwb{<-} \hlkwd{t.test}\hldef{(sample.beta.10.2,}           \hlcom{#Perform t-test and grab p-values for all samples}
+                      \hlkwc{mu} \hldef{=} \hlnum{10}\hlopt{/}\hlnum{12}\hldef{,}
+                      \hlkwc{alternative} \hldef{=} \hlsng{"less"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+  \hldef{p.value.2} \hlkwb{<-} \hlkwd{t.test}\hldef{(sample.beta.2.10,}
+                      \hlkwc{mu} \hldef{=} \hlnum{2}\hlopt{/}\hlnum{12}\hldef{,}
+                      \hlkwc{alternative} \hldef{=} \hlsng{"less"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+  \hldef{p.value.3} \hlkwb{<-} \hlkwd{t.test}\hldef{(sample.beta.10.10,}
+                      \hlkwc{mu} \hldef{=} \hlnum{10}\hlopt{/}\hlnum{20}\hldef{,}
+                      \hlkwc{alternative} \hldef{=} \hlsng{"less"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+  \hlcom{#Do hypothesis comparison and determine whether p-value < 0.05 (alpha)}
+  \hldef{hypo.check.less}\hlopt{$}\hldef{reject.10.2[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.1} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{)}
+  \hldef{hypo.check.less}\hlopt{$}\hldef{reject.2.10[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.2} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{)}
+  \hldef{hypo.check.less}\hlopt{$}\hldef{reject.10.10[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.3} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{)}
+\hldef{\}}
+
+\hldef{type1.error.rate.10.2} \hlkwb{<-} \hlkwd{sum}\hldef{(hypo.check.less}\hlopt{$}\hldef{reject.10.2)}\hlopt{/}\hldef{R} \hlcom{#Calculates type 1 error proportions}
+\hldef{type1.error.rate.2.10} \hlkwb{<-} \hlkwd{sum}\hldef{(hypo.check.less}\hlopt{$}\hldef{reject.2.10)}\hlopt{/}\hldef{R}
+\hldef{type1.error.rate.10.10} \hlkwb{<-} \hlkwd{sum}\hldef{(hypo.check.less}\hlopt{$}\hldef{reject.10.10)}\hlopt{/}\hldef{R}
+
+\hldef{type1.error.rate.10.2}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.022
+\end{verbatim}
+\begin{alltt}
+\hldef{type1.error.rate.2.10}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.07
+\end{verbatim}
+\begin{alltt}
+\hldef{type1.error.rate.10.10}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.052
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    
+    \item What proportion of the time do we make an error of Type I for a
+    right-tailed test? \\
+    \textbf{Solution:} Below, we find the proportion of the times we make a Type I error for the Beta(10,2), Beta(2,10), and Beta(10,10) distributions with a right-tailed test.
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hldef{hypo.check.greater} \hlkwb{<-} \hlkwd{tibble}\hldef{(} \hlcom{#Tibble to store our data}
+  \hlkwc{reject.10.2} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R),}
+  \hlkwc{reject.2.10} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R),}
+  \hlkwc{reject.10.10} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R)}
+\hldef{)}
+
+\hlkwa{for} \hldef{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hldef{R)\{}
+  \hldef{sample.beta.10.2} \hlkwb{<-} \hlkwd{rbeta}\hldef{(}\hlkwc{n} \hldef{=} \hlnum{15}\hldef{,} \hlkwc{shape1} \hldef{=} \hlnum{10}\hldef{,} \hlkwc{shape2} \hldef{=} \hlnum{2}\hldef{)} \hlcom{#Generate some samples of beta (10,2)}
+  \hldef{sample.beta.2.10} \hlkwb{<-} \hlkwd{rbeta}\hldef{(}\hlkwc{n} \hldef{=} \hlnum{15}\hldef{,} \hlkwc{shape1} \hldef{=} \hlnum{2}\hldef{,} \hlkwc{shape2} \hldef{=} \hlnum{10}\hldef{)} \hlcom{#Generate some samples of beta (2,10)}
+  \hldef{sample.beta.10.10} \hlkwb{<-} \hlkwd{rbeta}\hldef{(}\hlkwc{n}\hldef{=} \hlnum{15}\hldef{,} \hlkwc{shape1} \hldef{=} \hlnum{10}\hldef{,} \hlkwc{shape2} \hldef{=} \hlnum{10}\hldef{)} \hlcom{#Generate some samples of beta (10,10)}
+
+  \hldef{p.value.1} \hlkwb{<-} \hlkwd{t.test}\hldef{(sample.beta.10.2,}           \hlcom{#Perform t-test and grab p-values for all samples}
+                      \hlkwc{mu} \hldef{=} \hlnum{10}\hlopt{/}\hlnum{12}\hldef{,}
+                      \hlkwc{alternative} \hldef{=} \hlsng{"greater"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+  \hldef{p.value.2} \hlkwb{<-} \hlkwd{t.test}\hldef{(sample.beta.2.10,}
+                      \hlkwc{mu} \hldef{=} \hlnum{2}\hlopt{/}\hlnum{12}\hldef{,}
+                      \hlkwc{alternative} \hldef{=} \hlsng{"greater"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+  \hldef{p.value.3} \hlkwb{<-} \hlkwd{t.test}\hldef{(sample.beta.10.10,}
+                      \hlkwc{mu} \hldef{=} \hlnum{10}\hlopt{/}\hlnum{20}\hldef{,}
+                      \hlkwc{alternative} \hldef{=} \hlsng{"greater"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+  \hlcom{#Do hypothesis comparison and determine whether p-value < 0.05 (alpha)}
+  \hldef{hypo.check.greater}\hlopt{$}\hldef{reject.10.2[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.1} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{)}
+  \hldef{hypo.check.greater}\hlopt{$}\hldef{reject.2.10[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.2} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{)}
+  \hldef{hypo.check.greater}\hlopt{$}\hldef{reject.10.10[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.3} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{)}
+\hldef{\}}
+
+\hldef{type1.error.rate.10.2} \hlkwb{<-} \hlkwd{sum}\hldef{(hypo.check.greater}\hlopt{$}\hldef{reject.10.2)}\hlopt{/}\hldef{R} \hlcom{#Calculates type 1 error proportions}
+\hldef{type1.error.rate.2.10} \hlkwb{<-} \hlkwd{sum}\hldef{(hypo.check.greater}\hlopt{$}\hldef{reject.2.10)}\hlopt{/}\hldef{R}
+\hldef{type1.error.rate.10.10} \hlkwb{<-} \hlkwd{sum}\hldef{(hypo.check.greater}\hlopt{$}\hldef{reject.10.10)}\hlopt{/}\hldef{R}
+
+\hldef{type1.error.rate.10.2}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.075
+\end{verbatim}
+\begin{alltt}
+\hldef{type1.error.rate.2.10}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.021
+\end{verbatim}
+\begin{alltt}
+\hldef{type1.error.rate.10.10}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.052
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    
+    \item What proportion of the time do we make an error of Type I for a
+    two-tailed test? \\
+    \textbf{Solution:} Below, we find the proportion of the times we make a Type I error for the Beta(10,2), Beta(2,10), and Beta(10,10) distributions with a two-tailed test.
+\begin{knitrout}\scriptsize
+\definecolor{shadecolor}{rgb}{0.969, 0.969, 0.969}\color{fgcolor}\begin{kframe}
+\begin{alltt}
+\hldef{hypo.check.two.sided} \hlkwb{<-} \hlkwd{tibble}\hldef{(} \hlcom{#Tibble to store our data}
+  \hlkwc{reject.10.2} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R),}
+  \hlkwc{reject.2.10} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R),}
+  \hlkwc{reject.10.10} \hldef{=} \hlkwd{rep}\hldef{(}\hlnum{NA}\hldef{, R)}
+\hldef{)}
+
+\hlkwa{for} \hldef{(i} \hlkwa{in} \hlnum{1}\hlopt{:}\hldef{R)\{}
+  \hldef{sample.beta.10.2} \hlkwb{<-} \hlkwd{rbeta}\hldef{(}\hlkwc{n} \hldef{=} \hlnum{15}\hldef{,} \hlkwc{shape1} \hldef{=} \hlnum{10}\hldef{,} \hlkwc{shape2} \hldef{=} \hlnum{2}\hldef{)} \hlcom{#Generate some samples of beta (10,2)}
+  \hldef{sample.beta.2.10} \hlkwb{<-} \hlkwd{rbeta}\hldef{(}\hlkwc{n} \hldef{=} \hlnum{15}\hldef{,} \hlkwc{shape1} \hldef{=} \hlnum{2}\hldef{,} \hlkwc{shape2} \hldef{=} \hlnum{10}\hldef{)} \hlcom{#Generate some samples of beta (2,10)}
+  \hldef{sample.beta.10.10} \hlkwb{<-} \hlkwd{rbeta}\hldef{(}\hlkwc{n}\hldef{=} \hlnum{15}\hldef{,} \hlkwc{shape1} \hldef{=} \hlnum{10}\hldef{,} \hlkwc{shape2} \hldef{=} \hlnum{10}\hldef{)} \hlcom{#Generate some samples of beta (10,10)}
+
+  \hldef{p.value.1} \hlkwb{<-} \hlkwd{t.test}\hldef{(sample.beta.10.2,}           \hlcom{#Perform t-test and grab p-values for all samples}
+                      \hlkwc{mu} \hldef{=} \hlnum{10}\hlopt{/}\hlnum{12}\hldef{,}
+                      \hlkwc{alternative} \hldef{=} \hlsng{"two.sided"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+  \hldef{p.value.2} \hlkwb{<-} \hlkwd{t.test}\hldef{(sample.beta.2.10,}
+                      \hlkwc{mu} \hldef{=} \hlnum{2}\hlopt{/}\hlnum{12}\hldef{,}
+                      \hlkwc{alternative} \hldef{=} \hlsng{"two.sided"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+  \hldef{p.value.3} \hlkwb{<-} \hlkwd{t.test}\hldef{(sample.beta.10.10,}
+                      \hlkwc{mu} \hldef{=} \hlnum{10}\hlopt{/}\hlnum{20}\hldef{,}
+                      \hlkwc{alternative} \hldef{=} \hlsng{"two.sided"}\hldef{)}\hlopt{$}\hldef{p.value}
+
+  \hlcom{#Do hypothesis comparison and determine whether p-value < 0.05 (alpha)}
+  \hldef{hypo.check.two.sided}\hlopt{$}\hldef{reject.10.2[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.1} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{)}
+  \hldef{hypo.check.two.sided}\hlopt{$}\hldef{reject.2.10[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.2} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{)}
+  \hldef{hypo.check.two.sided}\hlopt{$}\hldef{reject.10.10[i]} \hlkwb{<-} \hlkwd{ifelse}\hldef{(p.value.3} \hlopt{<=} \hlnum{0.05}\hldef{,} \hlnum{1}\hldef{,} \hlnum{0}\hldef{)}
+\hldef{\}}
+
+\hlcom{#Calculates type 1 error proportions}
+\hldef{type1.error.rate.10.2} \hlkwb{<-} \hlkwd{sum}\hldef{(hypo.check.two.sided}\hlopt{$}\hldef{reject.10.2)}\hlopt{/}\hldef{R}
+\hldef{type1.error.rate.2.10} \hlkwb{<-} \hlkwd{sum}\hldef{(hypo.check.two.sided}\hlopt{$}\hldef{reject.2.10)}\hlopt{/}\hldef{R}
+\hldef{type1.error.rate.10.10} \hlkwb{<-} \hlkwd{sum}\hldef{(hypo.check.two.sided}\hlopt{$}\hldef{reject.10.10)}\hlopt{/}\hldef{R}
+
+\hldef{type1.error.rate.10.2}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.062
+\end{verbatim}
+\begin{alltt}
+\hldef{type1.error.rate.2.10}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.061
+\end{verbatim}
+\begin{alltt}
+\hldef{type1.error.rate.10.10}
+\end{alltt}
+\begin{verbatim}
+## [1] 0.059
+\end{verbatim}
+\end{kframe}
+\end{knitrout}
+    
+    \item How does skewness of the underlying population distribution effect
+    Type I error across the test types? \\
+    \textbf{Solution:} As seen by our Type I error proportions, Type I error can be inflated for deflated depending on the skewness of the data and the type of test we use. For the right skewed distributions (Beta(2,10)), Type I error is inflated with right-tailed tests and deflated with left-tailed tests. For the left-skewed distributions (Beta(10,2)), Type I error is inflated with left-tailed tests and deflated with right-tailed tests. With symmetric distributions (10,10), we get balanced Type I errors with both left and right tailed tests. However, we also get balanced Type I errors when we use a two-sided test for all three distributoon types.
+  \end{enumerate}
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+% End Document
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%%
+\end{enumerate}
+\bibliography{bibliography}
+\end{document}
